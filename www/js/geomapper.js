@@ -4,7 +4,7 @@ var countryList=[];
 var webserviceFile="http://api.geonames.org/postalCodeCountryInfo?&username=traineecgvak&style=full";
 var defaultLatLng = new google.maps.LatLng(34.0983425, -118.3267434);
 var mapHeight =$(window).height() - 44;
-var geocoder;
+var geocoder=new google.maps.Geocoder();
 var map;
 var currentPlace;
 
@@ -40,8 +40,7 @@ function listCountries(){
 }
 
 function drawMap(latlng) {
-	//Displays the map in the page
-	geocoder = new google.maps.Geocoder(); 
+	//Displays the map in the page	 
         var myOptions = {
             zoom: 2,
             center: latlng,
@@ -52,22 +51,40 @@ function drawMap(latlng) {
         var marker = new google.maps.Marker({
             position: latlng,
             map: map,
-            title: "Your Location"
+            title: "Initial Place"
         });
         
     }
 
 function geoSuccess(pos){
-	//Success function of getting current location	
-	currentPlace=new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-	alert(currentPlace);
-	drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-	//markCountries(currentPlace);
+	//Success function of getting current location
+
+	currentPlace=new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+	//alert(currentPlace);
+
+	var myOptions = {
+            zoom: 2,
+            center: currentPlace,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };        
+	geocoder.geocode({'latLng':currentPlace},function(results,status){
+		var infowindow = new google.maps.InfoWindow({content:"Your Location"});		
+		if(status==google.maps.GeocoderStatus.OK){
+			var marker=new google.maps.Marker({
+				position:currentPlace,
+				map:map
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map,marker);
+  });
+		}
+	});
+	
 }
 
 function geoFail(error){
 	alert("Couldn't get CurrentPosition")
-	drawMap(defaultLatLng);
+	//drawMap(defaultLatLng);
 }
 
 function plotCountries(){
@@ -92,7 +109,7 @@ function markCountries(cn){
       });
       
       google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
+      infowindow.open(map,marker);
   });
 
     } else {
