@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/geomapper.css" />
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/geomapper.js"></script>
+        
+        </script>
+        <title>GeoMapper</title>
+    </head>
+    <body>
+        <section data-role="page" id="home" >
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1>GeoMapper</h1>
+            </header>
+            <article data-role="main">
+                <input type="button" id="listbtn" value="List View" />
+                <input type="button" id="mapbtn" value="Map View"  />
+            </article>
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy All Rights Reserved</h1>
+            </footer>
+        </section>
+        <section data-role="page" id="listpage">
+            <header data-role="header" data-theme="b" data-position="fixed" >
+                <h1>CountryList</h1>
+            </header>
+            <article data-role="main"> 
+                <ul data-role="listview" data-inset="true" id="countries">
+                    
+                </ul>
+            </article>
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy All Rights Reserved</h1>
+            </footer>
+        </section>
+        <section data-url="map-page" data-role="page" id="map-page">
+            <header data-role="header" data-theme="b">
+                <a href="#" data-role="button" id="bckbtn" class="ui-btn ui-icon-back ui-btn-icon-left" data-rel="back" >Back</a>
+                <h1>Map View</h1>
+                <a href="#" data-role="button" id="lctme">Locate Me</a>
+                
+            </header>
+            <article data-role="content" class="ui-content">
+                <div id="map-canvas" style="width:100%"></div>
+            </article>
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                 <h1>&copy All Rights Reserved</h1>                 
+            </footer>
+        </section>
+        <script type="text/javascript" src="cordova.js"></script>        
+    </body>
+</html>
