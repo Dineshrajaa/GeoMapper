@@ -47,7 +47,7 @@
     <icon src="res/icon/android/fr-xxhdpi.png" gap:platform="android" gap:qualifier="fr-xxhdpi" />
 
     <!--SPLASH SCREEN FOR ALL-->
-    <gap:splash src="splash.png" />
+    <gap:splash src="splash.jpg" />
     <!--SPLASH SCREEN FOR ios-->
     <!-- iPhone and iPod touch -->
     <gap:splash src="res/screen/ios/Default.png" gap:platform="ios" width="320" height="480" />
