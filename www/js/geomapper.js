@@ -42,7 +42,7 @@ function listCountries(){
 function drawMap(latlng) {
 	//Displays the map in the page	 
         var myOptions = {
-            zoom: 2,
+            zoom: 3,
             center: latlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -60,10 +60,10 @@ function geoSuccess(pos){
 	//Success function of getting current location
 
 	currentPlace=new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
-	//alert(currentPlace);
+	
 
 	var myOptions = {
-            zoom: 2,
+            zoom: 3,
             center: currentPlace,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };        
