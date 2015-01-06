@@ -21,10 +21,12 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen"    value="true" />
     <preference name="android-installLocation"    value="auto" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
     <content src="index.html" />
 
     <!--CORE PLUGIN-->    
-    <gap:plugin name="org.apache.cordova.geolocation"/>    
+    <gap:plugin name="org.apache.cordova.geolocation"/> 
+    <gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />   
         
     <!--ICON FOR ALL-->
     <icon src="icon.png" />

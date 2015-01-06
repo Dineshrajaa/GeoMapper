@@ -11,7 +11,9 @@ var currentPlace;
 
 
 //Function Definitions
-
+document.addEventListener("deviceready",function(){
+	StatusBar.show();
+},false);
 function readCountries(){
 	//Read the CountryNames from Webservice using AJAX Call	
 	$.ajax({
@@ -60,7 +62,7 @@ function geoSuccess(pos){
 	//Success function of getting current location
 
 	currentPlace=new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
-	
+	var custIcon='marker.png';
 
 	var myOptions = {
             zoom: 3,
@@ -70,9 +72,11 @@ function geoSuccess(pos){
 	geocoder.geocode({'latLng':currentPlace},function(results,status){
 		var infowindow = new google.maps.InfoWindow({content:"Your Location"});		
 		if(status==google.maps.GeocoderStatus.OK){
+			map.setCenter(currentPlace);
 			var marker=new google.maps.Marker({
 				position:currentPlace,
-				map:map
+				map:map,
+				icon:custIcon
 			});
 			google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(map,marker);
